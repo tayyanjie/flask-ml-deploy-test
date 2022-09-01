@@ -1,0 +1,32 @@
+name: Makefile CI for Heart Failure Prediction
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+      
+    - name: Install dependencies
+      run: make install
+      
+    - name: Run format
+      run: make format
+      
+    - name: Run check
+      run: make lint
+      
+    - name: Run test
+      run: make test
