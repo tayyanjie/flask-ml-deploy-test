@@ -27,7 +27,7 @@ def predict():
     res = model.predict(data)
     data["label"] = res
     resp = make_response(data.to_csv(index=False))
-    resp.headers["Content-Disposition"] = "attachment; filename=predictions.csv"
+    resp.headers["Content-Disposition"] = "attachment;filename=predictions.csv"
     resp.headers["Content-Type"] = "text/csv"
     return resp
 
